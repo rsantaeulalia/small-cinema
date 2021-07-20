@@ -6,7 +6,7 @@ import java.time.LocalDate
 data class ShowTime(
     val id: Long? = null,
     val day: DayOfWeek,
-    val beginDate: LocalDate,
-    val endDate: LocalDate,
+    val beginDate: LocalDate? = null,
+    val endDate: LocalDate? = null,
     val schedule: List<TimeSchedule>
 )
