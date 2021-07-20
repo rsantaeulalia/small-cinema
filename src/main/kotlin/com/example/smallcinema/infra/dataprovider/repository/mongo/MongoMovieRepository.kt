@@ -5,4 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface MongoMovieRepository : MongoRepository<Movie, Long>
+interface MongoMovieRepository : MongoRepository<Movie, Long> {
+    fun findByTitleEqualsIgnoreCase(title: String): Movie?
+}

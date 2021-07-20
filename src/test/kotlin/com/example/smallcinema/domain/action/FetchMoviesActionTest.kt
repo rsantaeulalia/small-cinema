@@ -73,10 +73,10 @@ class FetchMoviesActionTest {
 
         every { movieDataProvider.findAll() } returns moviesList
 
-        val packageDetail = fetchMoviesAction.execute()
+        val retrievedMovies = fetchMoviesAction.execute()
 
         verify(exactly = 1) { movieDataProvider.findAll() }
-        assertEquals(packageDetail, moviesList)
+        assertEquals(retrievedMovies, moviesList)
     }
 
     @Test
@@ -84,9 +84,9 @@ class FetchMoviesActionTest {
 
         every { movieDataProvider.findAll() } returns emptyList()
 
-        val packageDetail = fetchMoviesAction.execute()
+        val retrievedMovies = fetchMoviesAction.execute()
 
         verify(exactly = 1) { movieDataProvider.findAll() }
-        assertTrue(packageDetail.isEmpty())
+        assertTrue(retrievedMovies.isEmpty())
     }
 }

@@ -123,6 +123,51 @@ class MovieRepositoryTest {
         Assertions.assertTrue(listOfMovies.any { movie -> movie.title == "Fast Five" })
     }
 
+    @Test
+    fun `given a movie title when the repository findByTitle method is called then returns a movie`() {
+        movieRepository.saveAll(
+            listOf(
+                Movie(
+                    null, "Furious 7", null, "tt2820852", LocalDate.now().minusDays(7),
+                    LocalDate.now().plusDays(7), listOf(
+                        ShowTime(
+                            null, DayOfWeek.FRIDAY, listOf(
+                                TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F),
+                                TimeSchedule(null, LocalDateTime.now().minusHours(1), 5.5F)
+                            )
+                        )
+                    ), listOf()
+                ),
+                Movie(
+                    null, "2 Fast 2 Furious", null, "tt0322259", LocalDate.now().minusDays(7),
+                    LocalDate.now().plusDays(7), listOf(
+                        ShowTime(
+                            null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                        ),
+                        ShowTime(
+                            null,
+                            DayOfWeek.SATURDAY,
+                            listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                        )
+                    ), listOf()
+                ),
+                Movie(
+                    null, "Fast Five", null, "tt1596343", LocalDate.now().minusDays(7),
+                    LocalDate.now().plusDays(7), listOf(
+                        ShowTime(
+                            null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                        )
+                    ), listOf(Review(null, "Test Customer", "Best movie ever", 5F))
+                )
+            )
+        )
+
+        movie = movieRepository.findByTitleEqualsIgnoreCase("fast five")!!
+
+        Assertions.assertNotNull(movie)
+        Assertions.assertEquals(movie.title.toLowerCase(), "fast five")
+    }
+
     @AfterEach
     fun clear() {
         movieRepository.deleteAll()

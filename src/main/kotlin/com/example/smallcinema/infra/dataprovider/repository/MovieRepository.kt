@@ -18,4 +18,8 @@ class MovieRepository(private val mongoRepository: MongoMovieRepository) : Movie
     override fun findAll(): List<Movie> {
         return mongoRepository.findAll()
     }
+
+    override fun findByTitle(title: String): Movie? {
+        return mongoRepository.findByTitleEqualsIgnoreCase(title)
+    }
 }

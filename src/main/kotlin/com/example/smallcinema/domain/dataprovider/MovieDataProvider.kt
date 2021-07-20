@@ -11,4 +11,5 @@ interface MovieDataProvider {
 
     fun findAll(): List<Movie>
 
+    fun findByTitle(title: String): Movie?
 }
