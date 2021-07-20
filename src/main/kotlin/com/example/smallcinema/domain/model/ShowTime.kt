@@ -1,12 +1,14 @@
 package com.example.smallcinema.domain.model
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.DayOfWeek
 import java.time.LocalDate
 
+@Document
 data class ShowTime(
-    val id: Long? = null,
+    @Id
+    val id: String? = null,
     val day: DayOfWeek,
-    val beginDate: LocalDate? = null,
-    val endDate: LocalDate? = null,
     val schedule: List<TimeSchedule>
 )

@@ -1,6 +1,7 @@
 package com.example.smallcinema.domain.dataprovider
 
-import com.example.smallcinema.infra.model.Movie
+import com.example.smallcinema.domain.model.Movie
+
 
 interface MovieDataProvider {
 

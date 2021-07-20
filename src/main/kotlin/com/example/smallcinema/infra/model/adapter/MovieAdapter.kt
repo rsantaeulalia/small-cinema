@@ -8,7 +8,12 @@ import com.example.smallcinema.infra.model.ShowTime as ShowTimeInfra
 import com.example.smallcinema.infra.model.TimeSchedule as TimeScheduleInfra
 
 fun Movie.toInfra(): MovieInfra {
-    return MovieInfra(this.title, this.description, this.showTimes.map { showTime -> showTime.toInfra() })
+    return MovieInfra(
+        this.title,
+        this.description,
+        this.beginDate,
+        this.endDate,
+        this.showTimes.map { showTime -> showTime.toInfra() })
 }
 
 fun ShowTime.toInfra(): ShowTimeInfra {
@@ -25,6 +30,8 @@ fun MovieInfra.toDomain(): Movie {
         this.title,
         this.description,
         null,
+        this.beginDate,
+        this.endDate,
         this.showTimes.map { showTime -> showTime.toDomain() },
         listOf()
     )
@@ -34,8 +41,6 @@ fun ShowTimeInfra.toDomain(): ShowTime {
     return ShowTime(
         null,
         this.day,
-        this.beginDate,
-        this.endDate,
         this.schedule.map { timeSchedule -> timeSchedule.toDomain() })
 }
 

@@ -1,5 +1,8 @@
 package com.example.smallcinema.domain.model
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
-class TimeSchedule(val id: Long? = null, val time: LocalDateTime, val price: Float)
+@Document
+class TimeSchedule(@Id val id: String? = null, val time: LocalDateTime, val price: Float)
