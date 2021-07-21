@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.DayOfWeek
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 class FetchMoviesActionTest {
 
@@ -36,8 +35,8 @@ class FetchMoviesActionTest {
             LocalDate.now().plusDays(7), listOf(
                 ShowTime(
                     null, DayOfWeek.FRIDAY, listOf(
-                        TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F),
-                        TimeSchedule(null, LocalDateTime.now().minusHours(1), 5.5F)
+                        TimeSchedule(null, "14:30", 5.5F),
+                        TimeSchedule(null, "18:30", 5.5F)
                     )
                 )
             ), listOf()
@@ -47,12 +46,12 @@ class FetchMoviesActionTest {
             null, "2 Fast 2 Furious", null, "tt0322259", LocalDate.now().minusDays(7),
             LocalDate.now().plusDays(7), listOf(
                 ShowTime(
-                    null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                    null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, "14:30", 5.5F))
                 ),
                 ShowTime(
                     null,
                     DayOfWeek.SATURDAY,
-                    listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                    listOf(TimeSchedule(null, "14:30", 5.5F))
                 )
             ), listOf()
         )
@@ -61,7 +60,7 @@ class FetchMoviesActionTest {
             null, "Fast Five", null, "tt1596343", LocalDate.now().minusDays(7),
             LocalDate.now().plusDays(7), listOf(
                 ShowTime(
-                    null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, LocalDateTime.now().minusHours(3), 5.5F))
+                    null, DayOfWeek.FRIDAY, listOf(TimeSchedule(null, "14:30", 5.5F))
                 )
             ), listOf(Review(null, "Test Customer", "Best movie ever", 5F))
         )
