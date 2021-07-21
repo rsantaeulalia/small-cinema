@@ -1,9 +1,9 @@
 package com.example.smallcinema.domain.dataprovider
 
-import com.example.smallcinema.domain.model.ImdbMovie
+import com.example.smallcinema.domain.model.OmdbMovie
 
 interface OmdbDataProvider {
 
-    fun getMovieDetailByImdbId(imdbId: String): ImdbMovie?
+    fun getMovieDetailByImdbId(imdbId: String): OmdbMovie?
 
 }

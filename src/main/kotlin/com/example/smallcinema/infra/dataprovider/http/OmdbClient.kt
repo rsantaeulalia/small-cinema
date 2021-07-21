@@ -3,7 +3,7 @@ package com.example.smallcinema.infra.dataprovider.http
 import com.example.smallcinema.domain.dataprovider.OmdbDataProvider
 import com.example.smallcinema.domain.exception.ImdbClientFailureException
 import com.example.smallcinema.domain.exception.MovieNotFoundOnImdbException
-import com.example.smallcinema.domain.model.ImdbMovie
+import com.example.smallcinema.domain.model.OmdbMovie
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import kong.unirest.Unirest
@@ -19,7 +19,7 @@ class OmdbClient(
     private val objectMapper: ObjectMapper
 ) : OmdbDataProvider {
 
-    override fun getMovieDetailByImdbId(imdbId: String): ImdbMovie? {
+    override fun getMovieDetailByImdbId(imdbId: String): OmdbMovie? {
         objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
         objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_VALUES, true)
         objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS, true)
@@ -30,7 +30,7 @@ class OmdbClient(
 
             when (response?.status?.let { HttpStatus.valueOf(it) }) {
                 HttpStatus.ACCEPTED, HttpStatus.OK -> {
-                    objectMapper.readValue(response.body.toString(), ImdbMovie::class.java)
+                    objectMapper.readValue(response.body.toString(), OmdbMovie::class.java)
                 }
                 else -> throw MovieNotFoundOnImdbException(imdbId)
             }

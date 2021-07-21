@@ -1,6 +1,6 @@
 package com.example.smallcinema.domain.model
 
-data class ImdbMovie(
+data class OmdbMovie(
     var title: String?,
     var year: Int?,
     var rated: String?,
