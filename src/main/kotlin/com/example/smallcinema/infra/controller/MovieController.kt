@@ -45,11 +45,11 @@ class MovieController(
                             "beginDate": "22 Jul 2021",
                             "endDate": "29 Jul 2021",
                             "showTimes": [{
-                                "day": MONDAY,
+                                "day": "MONDAY",
                                 "schedule": [{
                                     "time": "14:30",
                                     "price": "5.5"
-                                }}
+                                }]
                             }]
                         }
                         """
@@ -81,11 +81,11 @@ class MovieController(
                             "beginDate": "22 Jul 2021",
                             "endDate": "29 Jul 2021",
                             "showTimes": [{
-                                "day": MONDAY,
+                                "day": "MONDAY",
                                 "schedule": [{
                                     "time": "14:30",
                                     "price": "5.5"
-                                }}
+                                }]
                             }]
                         }
                         """
@@ -124,11 +124,11 @@ class MovieController(
                             "beginDate": "22 Jul 2021",
                             "endDate": "29 Jul 2021",
                             "showTimes": [{
-                                "day": MONDAY,
+                                "day": "MONDAY",
                                 "schedule": [{
                                     "time": "14:30",
                                     "price": "5.5"
-                                }}
+                                }]
                             }]
                         }
                         """

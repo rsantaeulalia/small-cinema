@@ -3,6 +3,7 @@ package com.example.smallcinema.infra.model.adapter
 import com.example.smallcinema.domain.model.Movie
 import com.example.smallcinema.domain.model.ShowTime
 import com.example.smallcinema.domain.model.TimeSchedule
+import java.time.DayOfWeek
 import com.example.smallcinema.infra.model.Movie as MovieInfra
 import com.example.smallcinema.infra.model.ShowTime as ShowTimeInfra
 import com.example.smallcinema.infra.model.TimeSchedule as TimeScheduleInfra
@@ -17,7 +18,7 @@ fun Movie.toInfra(): MovieInfra {
 }
 
 fun ShowTime.toInfra(): ShowTimeInfra {
-    return ShowTimeInfra(this.day, this.schedule.map { timeSchedule -> timeSchedule.toInfra() })
+    return ShowTimeInfra(this.day.name, this.schedule.map { timeSchedule -> timeSchedule.toInfra() })
 }
 
 fun TimeSchedule.toInfra(): TimeScheduleInfra {
@@ -40,7 +41,7 @@ fun MovieInfra.toDomain(): Movie {
 fun ShowTimeInfra.toDomain(): ShowTime {
     return ShowTime(
         null,
-        this.day,
+        DayOfWeek.valueOf(this.day),
         this.schedule.map { timeSchedule -> timeSchedule.toDomain() })
 }
 
