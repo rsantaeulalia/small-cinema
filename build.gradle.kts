@@ -21,9 +21,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.konghq:unirest-java:2.3.17")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 	testImplementation("io.mockk:mockk:1.12.0")
+	testImplementation("com.github.tomakehurst:wiremock-jre8:2.29.1")
 }
 
 tasks.withType<KotlinCompile> {
