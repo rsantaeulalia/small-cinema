@@ -53,4 +53,4 @@ the OpenApi doc is available on:
 
 Rodrigo Santa Eulalia - rodrigo.santaeulalia@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/rsantaeulalia/small-cinema](https://github.com/rsantaeulalia/small-cinema)
