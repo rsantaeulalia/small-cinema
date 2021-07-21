@@ -1,6 +1,7 @@
 package com.example.smallcinema.infra.config
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -15,7 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig : WebSecurityConfigurerAdapter() {
+class SecurityConfig(
+    @Value("\${spring.security.user.name}") private val username: String,
+    @Value("\${spring.security.user.password}") val password: String
+) : WebSecurityConfigurerAdapter() {
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
@@ -31,8 +35,8 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     fun configureGlobal(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password(passwordEncoder().encode("password"))
+            .withUser(username)
+            .password(passwordEncoder().encode(password))
             .roles("ADMIN")
     }
 

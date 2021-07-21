@@ -28,4 +28,10 @@ class ExceptionController : ResponseEntityExceptionHandler() {
         val body = mapOf("message" to ex.message)
         return ResponseEntity(body, HttpStatus.NOT_FOUND)
     }
+
+    @ExceptionHandler(Exception::class)
+    fun handleDefaultException(ex: Exception): ResponseEntity<Any> {
+        val body = mapOf("message" to ex.message)
+        return ResponseEntity(body, HttpStatus.CONFLICT)
+    }
 }
