@@ -11,15 +11,23 @@ import com.example.smallcinema.infra.model.ShowTime
 import com.example.smallcinema.infra.model.adapter.toDomain
 import com.example.smallcinema.infra.model.adapter.toInfra
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.ExampleObject
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import io.swagger.v3.oas.annotations.security.SecurityScheme
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+@SecurityScheme(
+    name = "basicAuth",
+    type = SecuritySchemeType.HTTP,
+    scheme = "basic"
+)
 @RequestMapping(value = ["/v1/api/small-cinema"])
 @RestController
 class MovieController(
@@ -108,7 +116,9 @@ class MovieController(
         )
     }
 
-    @Operation(summary = "Send new showtimes for a Movie", operationId = "updateMovieShowTimes")
+    @Operation(summary = "Send new showtimes for a Movie", operationId = "updateMovieShowTimes",
+        security = [SecurityRequirement(name = "basicAuth")]
+    )
     @ApiResponses(
         ApiResponse(
             responseCode = "200", description = "Showtimes successfully send", content = [Content(
