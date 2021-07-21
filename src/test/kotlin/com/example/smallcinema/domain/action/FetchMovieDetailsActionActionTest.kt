@@ -1,9 +1,9 @@
 package com.example.smallcinema.domain.action
 
 import com.example.smallcinema.domain.dataprovider.OmdbDataProvider
-import com.example.smallcinema.domain.exception.MovieNotFoundOnImdbException
-import com.example.smallcinema.domain.model.OmdbMovie
-import com.example.smallcinema.domain.model.Ratings
+import com.example.smallcinema.domain.exception.MovieNotFoundOnOmdbException
+import com.example.smallcinema.infra.model.OmdbMovie
+import com.example.smallcinema.infra.model.Ratings
 import io.mockk.MockKAnnotations.init
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -76,7 +76,7 @@ class FetchMovieDetailsActionActionTest {
     fun `given an invalid imdb id for a movie when fetch details from client then throw exception`() {
         every { omdbMovieDataProvider.getMovieDetailByImdbId(invalidImdbId) } returns null
 
-        Assertions.assertThrows(MovieNotFoundOnImdbException::class.java) {
+        Assertions.assertThrows(MovieNotFoundOnOmdbException::class.java) {
             fetchMovieDetailsAction.execute(invalidImdbId)
         }
 

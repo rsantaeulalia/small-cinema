@@ -7,7 +7,7 @@ class ImdbClientFailureException() : ImdbClientException() {
     override val errorCode = 4001
 }
 
-class MovieNotFoundOnImdbException(imdbId: String) : ImdbClientException() {
+class MovieNotFoundOnOmdbException(imdbId: String) : ImdbClientException() {
     override val message = "The $imdbId movie don't exists on API"
     override val errorCode = 4002
 }

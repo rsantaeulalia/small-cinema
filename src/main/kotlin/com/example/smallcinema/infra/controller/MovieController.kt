@@ -1,9 +1,11 @@
 package com.example.smallcinema.infra.controller
 
 import com.example.smallcinema.domain.action.AddMovieReviewAction
+import com.example.smallcinema.domain.action.FetchMovieDetailsAction
 import com.example.smallcinema.domain.action.FetchMoviesAction
 import com.example.smallcinema.domain.action.UpdateMovieAction
 import com.example.smallcinema.infra.model.Movie
+import com.example.smallcinema.infra.model.OmdbMovie
 import com.example.smallcinema.infra.model.Review
 import com.example.smallcinema.infra.model.ShowTime
 import com.example.smallcinema.infra.model.adapter.toDomain
@@ -16,7 +18,8 @@ import org.springframework.web.bind.annotation.*
 class MovieController(
     private val fetchMoviesAction: FetchMoviesAction,
     private val addMovieReviewAction: AddMovieReviewAction,
-    private val updateMovieAction: UpdateMovieAction
+    private val updateMovieAction: UpdateMovieAction,
+    private val fetchMovieDetailsAction: FetchMovieDetailsAction
 ) {
 
     @GetMapping(value = ["/movies"])
@@ -48,5 +51,10 @@ class MovieController(
                 showTimes.map { showTime -> showTime.toDomain() }
             ).toInfra()
         )
+    }
+
+    @GetMapping(value = ["/movies/{imdbId}/details"])
+    fun getMovieDetails(@PathVariable imdbId: String): ResponseEntity<OmdbMovie> {
+        return ResponseEntity.ok(fetchMovieDetailsAction.execute(imdbId))
     }
 }

@@ -1,6 +1,6 @@
 package com.example.smallcinema.domain.dataprovider
 
-import com.example.smallcinema.domain.model.OmdbMovie
+import com.example.smallcinema.infra.model.OmdbMovie
 
 interface OmdbDataProvider {
 

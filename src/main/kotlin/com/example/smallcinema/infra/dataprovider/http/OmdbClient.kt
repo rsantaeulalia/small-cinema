@@ -2,8 +2,8 @@ package com.example.smallcinema.infra.dataprovider.http
 
 import com.example.smallcinema.domain.dataprovider.OmdbDataProvider
 import com.example.smallcinema.domain.exception.ImdbClientFailureException
-import com.example.smallcinema.domain.exception.MovieNotFoundOnImdbException
-import com.example.smallcinema.domain.model.OmdbMovie
+import com.example.smallcinema.domain.exception.MovieNotFoundOnOmdbException
+import com.example.smallcinema.infra.model.OmdbMovie
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import kong.unirest.Unirest
@@ -32,7 +32,7 @@ class OmdbClient(
                 HttpStatus.ACCEPTED, HttpStatus.OK -> {
                     objectMapper.readValue(response.body.toString(), OmdbMovie::class.java)
                 }
-                else -> throw MovieNotFoundOnImdbException(imdbId)
+                else -> throw MovieNotFoundOnOmdbException(imdbId)
             }
         }.onFailure { e ->
             throw ImdbClientFailureException()

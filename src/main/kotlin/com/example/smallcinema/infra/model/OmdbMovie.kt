@@ -1,4 +1,4 @@
-package com.example.smallcinema.domain.model
+package com.example.smallcinema.infra.model
 
 data class OmdbMovie(
     var title: String?,
