@@ -54,3 +54,11 @@ the OpenApi doc is available on:
 Rodrigo Santa Eulalia - rodrigo.santaeulalia@gmail.com
 
 Project Link: [https://github.com/rsantaeulalia/small-cinema](https://github.com/rsantaeulalia/small-cinema)
+
+<!-- LIBS -->
+## Some used libraries
+* [Kong Unirest](http://kong.github.io/unirest-java/)
+* [Open API](https://www.openapis.org/)
+* [Flapdoodle Embedded Mongo](https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo)
+* [Mockk](https://mockk.io/)
+* [Wiremock](http://wiremock.org/)
